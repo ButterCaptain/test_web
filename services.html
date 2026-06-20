@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Hire Ready Pro</title>
+  <meta name="description" content="Explore HireReady Pro's career programs and individual services designed for students, graduates, and professionals. Resume optimization, interview prep, job search strategy, and more.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Site Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER
+       ======================================================================== -->
+  <div id="header-placeholder"></div>
+
+
+  <!-- ========================================================================
+       SECTION: Hero
+       Full-viewport intro with eyebrow, headline, subtitle, and two
+       audience-selector cards linking down to the tabbed services area.
+       ======================================================================== -->
+  <section class="hero">
+    <div class="animate-on-scroll">
+      <span class="eyebrow">PROGRAMS &amp; SERVICES</span>
+      <h1>Career Solutions Designed to<br>Accelerate Results</h1>
+      <p>HireReady Pro provides strategic, personalized support to help you stand out in a competitive job market — whether you're launching your career or leveling up.</p>
+    </div>
+
+    <!-- Audience selector cards -->
+    <div class="toolkit-grid animate-on-scroll delay-2" style="max-width: 720px; margin-top: 20px;">
+
+      <!-- Card 1 — Students & Graduates -->
+      <a class="card" onclick="openTab(null, 'grads')" href="#services" style="text-decoration:none;">
+        <div class="card-header">
+          <i class="bi bi-mortarboard card-icon"></i>
+          <h3>Students &amp; Graduates</h3>
+        </div>
+        <p>Structured programs built to bridge the gap between education and employment — fast.</p>
+        <p style="margin-top: 16px; font-weight: 600; color: var(--primary);">Explore Student Programs →</p>
+      </a>
+
+      <!-- Card 2 — Professionals -->
+      <a class="card" onclick="openTab(null, 'pros')" href="#services" style="text-decoration:none;">
+        <div class="card-header">
+          <i class="bi bi-person-badge card-icon" style="color: #dc3545;"></i>
+          <h3>Professionals</h3>
+        </div>
+        <p>Targeted services for experienced professionals ready to advance, pivot, or re-enter the workforce.</p>
+        <p style="margin-top: 16px; font-weight: 600; color: var(--primary);">Professional Programs →</p>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECTION: Career Bundles
+       Three comprehensive program packages presented in a card grid.
+       ======================================================================== -->
+  <section id="career-bundles">
+    <div class="section-container">
+
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Career Bundles</h2>
+        <p class="section-subtitle">Comprehensive, multi-service programs that combine our most impactful offerings into one streamlined package — saving you time, money, and guesswork.</p>
+      </div>
+
+      <div class="toolkit-grid">
+
+        <!-- Bundle 1 — Career Essentials -->
+        <div class="card animate-on-scroll delay-1">
+          <div class="card-header">
+            <i class="bi bi-wrench-adjustable-circle card-icon"></i>
+            <h3>Career Essentials</h3>
+          </div>
+          <p>A focused program designed to sharpen your positioning and build career readiness from the ground up. Ideal for those who need foundational support to compete with confidence.</p>
+          <p style="margin-top: 16px; font-weight: 600; color: var(--primary);">Learn More →</p>
+        </div>
+
+        <!-- Bundle 2 — Career Launch -->
+        <div class="card animate-on-scroll delay-2">
+          <div class="card-header">
+            <i class="bi bi-wrench-adjustable-circle card-icon"></i>
+            <h3>Career Launch</h3>
+          </div>
+          <p>A comprehensive program built to guide you through the full education-to-employment transition. Includes resume optimization, interview training, job search strategy, and more.</p>
+          <p style="margin-top: 16px; font-weight: 600; color: var(--primary);">Learn More →</p>
+        </div>
+
+        <!-- Bundle 3 — Career Advantage -->
+        <div class="card animate-on-scroll delay-3">
+          <div class="card-header">
+            <i class="bi bi-card-checklist card-icon"></i>
+            <h3>Career Advantage</h3>
+          </div>
+          <p>A high-touch partnership designed to accelerate your career advancement. Perfect for professionals seeking personalized, ongoing support to reach the next level.</p>
+          <p style="margin-top: 16px; font-weight: 600; color: var(--primary);">Learn More →</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECTION: Individual Services (Tabbed)
+       Toggle between "Students & Graduates" and "Professionals" service grids.
+       ======================================================================== -->
+  <section id="services" style="background-color: var(--primary-light);">
+    <div class="section-container">
+
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">Job Ready Services</span>
+        <h2 class="section-title">Individual Services</h2>
+        <p class="section-subtitle">Not ready for a full bundle? Choose the specific services you need and build a custom path to career success.</p>
+      </div>
+
+      <!-- Tab buttons -->
+      <div class="tab-buttons animate-on-scroll">
+        <button class="btn-talk tab-btn active" onclick="openTab(event, 'grads')">Students &amp; Graduates</button>
+        <button class="btn-talk tab-btn" onclick="openTab(event, 'pros')">Professionals</button>
+      </div>
+
+      <!-- ── Tab: Students & Graduates ──────────────────────────────────────── -->
+      <div id="grads" class="tab-content active">
+        <div class="toolkit-grid">
+
+          <div class="card animate-on-scroll delay-1">
+            <div class="card-header">
+              <i class="bi bi-file-earmark-person card-icon"></i>
+              <h3>Career Assessments SkillScan® and DiSC®</h3>
+            </div>
+            <p>Discover your transferable skills, personality strengths, and communication style through industry-leading assessment tools — building a foundation for targeted career planning.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-2">
+            <div class="card-header">
+              <i class="bi bi-linkedin card-icon"></i>
+              <h3>Resume &amp; LinkedIn Optimization</h3>
+            </div>
+            <p>Get a professionally crafted resume and LinkedIn profile that highlight your unique value, pass ATS filters, and attract the attention of hiring managers and recruiters.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-3">
+            <div class="card-header">
+              <i class="bi bi-mic card-icon"></i>
+              <h3>Interview Preparation</h3>
+            </div>
+            <p>Build confidence and master behavioral, situational, and technical interview formats through mock sessions, personalized feedback, and proven response frameworks.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-1">
+            <div class="card-header">
+              <i class="bi bi-compass card-icon"></i>
+              <h3>Job Search Strategy</h3>
+            </div>
+            <p>Develop a structured, efficient job search plan tailored to your goals — covering target company research, application tracking, and outreach tactics that get results.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-2">
+            <div class="card-header">
+              <i class="bi bi-box-seam card-icon"></i>
+              <h3>Networking Guidance</h3>
+            </div>
+            <p>Learn how to build meaningful professional relationships, craft compelling elevator pitches, and leverage networking events and LinkedIn to unlock hidden opportunities.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-3">
+            <div class="card-header">
+              <i class="bi bi-card-checklist card-icon"></i>
+              <h3>Career Competitiveness Scorecard</h3>
+            </div>
+            <p>Receive a comprehensive evaluation of your career readiness across key dimensions — with a clear action plan to close gaps and gain a competitive edge in your field.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Tab: Professionals ─────────────────────────────────────────────── -->
+      <div id="pros" class="tab-content">
+        <div class="toolkit-grid">
+
+          <div class="card animate-on-scroll delay-1">
+            <div class="card-header">
+              <i class="bi bi-file-earmark-person card-icon"></i>
+              <h3>Career Assessments SkillScan® and DiSC®</h3>
+            </div>
+            <p>Leverage proven assessment tools to identify your leadership style, transferable skills, and communication preferences — empowering strategic career decisions at every stage.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-2">
+            <div class="card-header">
+              <i class="bi bi-linkedin card-icon"></i>
+              <h3>Resume &amp; LinkedIn Optimization</h3>
+            </div>
+            <p>Upgrade your resume and LinkedIn presence to reflect senior-level accomplishments, quantified impact, and executive positioning that commands attention from top recruiters.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-3">
+            <div class="card-header">
+              <i class="bi bi-mic card-icon"></i>
+              <h3>Interview Preparation</h3>
+            </div>
+            <p>Prepare for high-stakes interviews with advanced coaching on executive presence, salary negotiation, panel formats, and strategic storytelling that sets you apart from the competition.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-1">
+            <div class="card-header">
+              <i class="bi bi-compass card-icon"></i>
+              <h3>Job Search Strategy</h3>
+            </div>
+            <p>Craft a targeted search plan that aligns with your career trajectory — including executive job boards, recruiter outreach, and positioning for roles that match your ambitions.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-2">
+            <div class="card-header">
+              <i class="bi bi-box-seam card-icon"></i>
+              <h3>Networking Guidance</h3>
+            </div>
+            <p>Master advanced networking strategies for mid-career and senior professionals — from informational interviews to industry events, thought leadership, and strategic relationship building.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+          <div class="card animate-on-scroll delay-3">
+            <div class="card-header">
+              <i class="bi bi-card-checklist card-icon"></i>
+              <h3>Career Competitiveness Scorecard</h3>
+            </div>
+            <p>Get a detailed assessment of your professional standing with actionable benchmarks — identifying strengths to leverage and gaps to close for accelerated career growth.</p>
+            <p style="margin-top: 16px; font-weight: 600; color: var(--primary-dark);">Learn More →</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Framework CTA -->
+      <div class="animate-on-scroll" style="text-align: center; margin-top: 60px;">
+        <p style="font-size: 17px; color: var(--text-mid); max-width: 640px; margin: 0 auto 24px;">Every service we offer is built on the <strong>HireReady Framework</strong> — a proven methodology that combines assessment, strategy, and execution to deliver measurable career outcomes.</p>
+        <a href="framework.html" class="btn-talk">Explore the Framework →</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECTION: Contact Form — Ready to Get Started?
+       Two-column layout: info on left, form card on right.
+       ======================================================================== -->
+  <section style="background-color: var(--primary-light);">
+    <div class="section-container">
+      <div class="contact-grid animate-on-scroll">
+
+        <!-- Left — Contact info -->
+        <div class="contact-info">
+          <h2>Ready to Get Started?</h2>
+          <p>Tell us a little about your goals and we'll get back to you within 48 hours with a personalized recommendation. No pressure — just a conversation about what's possible.</p>
+
+          <div class="info-item">
+            <i class="bi bi-envelope info-icon"></i>
+            <p><strong>Email Us</strong>info@hirereadypro.com</p>
+          </div>
+
+          <div class="info-item">
+            <i class="bi bi-geo-alt info-icon"></i>
+            <p><strong>Locations</strong>Las Vegas, NV<br>St. George, UT<br>Calgary, AB Canada</p>
+          </div>
+
+          <div class="info-item">
+            <i class="bi bi-linkedin info-icon"></i>
+            <p><strong>LinkedIn</strong>Hire Ready Pro</p>
+          </div>
+        </div>
+
+        <!-- Right — Form card -->
+        <div class="consultation-form-card">
+          <form id="contactForm" method="POST">
+            <input type="hidden" name="FormType" value="General_Contact">
+
+            <!-- First + Last name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First Name</label>
+                <input type="text" id="firstName" name="FirstName" class="form-control" placeholder="Jane" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="LastName" class="form-control" placeholder="Doe" required>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" name="Email" class="form-control" placeholder="jane@example.com" required>
+            </div>
+
+            <!-- Topic -->
+            <div class="form-group">
+              <label class="form-label" for="topic">I'm interested in…</label>
+              <select id="topic" name="Topic" class="form-control" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="HireReady Grad Consultation">HireReady Grad Consultation</option>
+                <option value="HireReady PRO Consultation">HireReady PRO Consultation</option>
+              </select>
+            </div>
+
+            <!-- Resume upload -->
+            <div class="form-group">
+              <label class="form-label" for="resume">Upload Resume (PDF)</label>
+              <input type="file" id="resume" name="Resume" class="form-control" accept=".pdf">
+            </div>
+
+            <!-- LinkedIn URL -->
+            <div class="form-group">
+              <label class="form-label" for="linkedin">LinkedIn Profile URL</label>
+              <input type="url" id="linkedin" name="LinkedIn" class="form-control" placeholder="https://linkedin.com/in/your-profile">
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" name="Message" class="form-control" placeholder="Tell us about your career goals…" rows="5"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-talk" style="width: 100%;">Send Message</button>
+          </form>
+
+          <!-- Server / JS response area -->
+          <div id="formResponse"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <div id="footer-placeholder"></div>
+
+
+  <!-- ========================================================================
+       SCRIPTS
+       ======================================================================== -->
+  <script src="js/header-loader.js"></script>
+  <script src="js/footer-loader.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/form-handler.js"></script>
+
+  <!-- Tab switching logic -->
+  <script>
+    /**
+     * openTab — switches between tabbed content panels.
+     * Called by tab buttons and by the hero audience cards.
+     *
+     * @param {Event|null} evt   — the click event (null when called from hero cards)
+     * @param {string}     tabName — the id of the tab-content div to activate
+     */
+    function openTab(evt, tabName) {
+      // Hide all tab panels
+      var tabcontent = document.getElementsByClassName('tab-content');
+      for (var i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove('active');
+      }
+
+      // Deactivate all tab buttons
+      var tablinks = document.getElementsByClassName('tab-btn');
+      for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove('active');
+      }
+
+      // Show the target tab
+      document.getElementById(tabName).classList.add('active');
+
+      // Activate the correct button
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
+      } else {
+        // Fallback: match button by its onclick attribute (hero card clicks)
+        for (var i = 0; i < tablinks.length; i++) {
+          if (tablinks[i].getAttribute('onclick').includes(tabName)) {
+            tablinks[i].classList.add('active');
+            break;
+          }
+        }
+      }
+    }
+
+    // Expose globally so inline onclick attributes work
+    window.openTab = openTab;
+  </script>
+
+</body>
+</html>

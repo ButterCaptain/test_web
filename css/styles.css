@@ -1,0 +1,1230 @@
+/* ==========================================================================
+   HIRE READY PRO — Main Stylesheet
+   A premium career-services website with chunked layout aesthetic.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   All colors, shadows, radii, and spacing live here for easy theming.
+   ========================================================================== */
+
+:root {
+  /* ── Brand palette ─────────────────────────────────────────────────────── */
+  --primary:              #765fba;
+  --primary-hover:        #8a6de0;
+  --primary-dark:         rgb(65, 40, 120);
+  --primary-button-light: #ddd2ff;
+  --primary-light:        #f2f4fd;
+  --primary-border:       #d4c8f0;
+
+  /* ── Surfaces ──────────────────────────────────────────────────────────── */
+  --body-bg:   #f2f4fd;
+  --card-bg:   #ffffff;
+  --border:    #e5e7eb;
+  --white:     #ffffff;
+
+  /* ── Typography ────────────────────────────────────────────────────────── */
+  --text-dark:  #111827;
+  --text-mid:   #374151;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+
+  /* ── Elevation ─────────────────────────────────────────────────────────── */
+  --shadow-sm: 0 2px 8px rgba(118, 95, 186, 0.08);
+  --shadow-md: 0 10px 30px rgba(118, 95, 186, 0.12);
+
+  /* ── Shape ─────────────────────────────────────────────────────────────── */
+  --radius: 12px;
+
+  /* ── Layout ────────────────────────────────────────────────────────────── */
+  --nav-height: 72px;
+  --max-width:  1100px;
+
+  /* ── Motion ────────────────────────────────────────────────────────────── */
+  --transition-speed: 0.3s;
+}
+
+
+/* ==========================================================================
+   2. CORE RESET
+   Normalize box-model, scroll behaviour, and base typography.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  background-color: var(--body-bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+
+/* ==========================================================================
+   3. SCROLL ANIMATION UTILITIES
+   Elements start hidden below and fade + slide up when they enter the
+   viewport (toggled via JS adding the .visible class).
+   ========================================================================== */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children for sequential reveal */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+
+/* ==========================================================================
+   4. NAVIGATION
+   Sticky top-bar with dark primary background, logo, links, dropdown
+   support, and a mobile burger menu.
+   ========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 40px;
+  background-color: var(--primary-dark);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Logo ────────────────────────────────────────────────────────────────── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.logo img {
+  height: 36px;
+  width: auto;
+}
+
+/* ── Nav links ───────────────────────────────────────────────────────────── */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  transition: color var(--transition-speed), background-color var(--transition-speed);
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link.active {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Dropdown support ────────────────────────────────────────────────────── */
+
+.nav-item {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  padding: 8px 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed), visibility var(--transition-speed), transform var(--transition-speed);
+  transform: translateX(-50%) translateY(8px);
+}
+
+.nav-item:hover .nav-dropdown,
+.nav-item:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.dropdown-link:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ── Mobile burger ───────────────────────────────────────────────────────── */
+
+.mobile-only {
+  display: none;          /* shown in responsive breakpoint */
+}
+
+.burger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  border: none;
+  background: none;
+}
+
+.burger-icon span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: transform var(--transition-speed), opacity var(--transition-speed);
+}
+
+.burger-dropdown-right {
+  position: absolute;
+  top: var(--nav-height);
+  right: 0;
+  width: 240px;
+  padding: 12px 0;
+  background: var(--white);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-speed), visibility var(--transition-speed), transform var(--transition-speed);
+}
+
+.burger-dropdown-right.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.burger-dropdown-right a {
+  display: block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-mid);
+  transition: background-color var(--transition-speed);
+}
+
+.burger-dropdown-right a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+
+/* ==========================================================================
+   5. BUTTONS
+   Three variants: solid primary, outline, and the "talk" CTA style.
+   ========================================================================== */
+
+/* ── Shared base ─────────────────────────────────────────────────────────── */
+
+.btn-primary,
+.btn-outline,
+.btn-talk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition-speed) ease;
+}
+
+/* ── Primary (solid) ─────────────────────────────────────────────────────── */
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Outline ─────────────────────────────────────────────────────────────── */
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary-border);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+  transform: scale(1.04);
+}
+
+/* ── Talk / CTA (CareerSling-inspired) ───────────────────────────────────── */
+
+.btn-talk {
+  background-color: var(--primary-button-light);
+  color: var(--primary-dark);
+  border-color: var(--primary-border);
+}
+
+.btn-talk:hover {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  border-color: var(--primary-dark);
+  transform: scale(1.08);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================================================
+   6. CARDS
+   Reusable content cards with icon headers and a lift-on-hover effect.
+   ========================================================================== */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card-icon {
+  font-size: 28px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   7. GRID SYSTEMS
+   Auto-fit grid for equal cards and a toolkit variant with stretch.
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+
+/* ==========================================================================
+   8. HERO SECTION
+   Full-viewport intro with gradient background, eyebrow tag, headline,
+   subtext, and CTA button row.
+   ========================================================================== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - var(--nav-height));
+  padding: 80px 24px;
+  background: linear-gradient(180deg, var(--white) 0%, #f0f4ff 100%);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  color: var(--text-dark);
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================================================
+   9. SECTION LAYOUTS
+   Consistent container, header, and title styles used across all sections.
+   ========================================================================== */
+
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   10. STEP / FRAMEWORK PILLARS
+   Numbered badges and ascending-height pillar cards for process steps.
+   ========================================================================== */
+
+.step-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+  background-color: var(--primary-dark);
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+/* Ascending heights create a visual "staircase" effect */
+.step-01 { min-height: 440px; }
+.step-02 { min-height: 480px; }
+.step-03 { min-height: 520px; }
+.step-04 { min-height: 560px; }
+
+.framework-list {
+  margin-top: 16px;
+  padding-left: 0;
+}
+
+.framework-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.framework-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+
+/* ==========================================================================
+   11. BIO / ABOUT SECTION
+   Two-column layout with image on the left and content on the right.
+   ========================================================================== */
+
+.bio-section {
+  padding: 100px 20px;
+}
+
+.bio-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.bio-image {
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  object-fit: cover;
+}
+
+.bio-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.bio-content p {
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+
+/* ==========================================================================
+   12. CONTACT GRID & FORMS
+   Two-column contact layout (info + form card) with styled inputs.
+   ========================================================================== */
+
+/* ── Contact grid ────────────────────────────────────────────────────────── */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.info-icon {
+  font-size: 24px;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-item p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.info-item strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+/* ── Form card ───────────────────────────────────────────────────────────── */
+
+.consultation-form-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+
+.consultation-form-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.consultation-form-card > p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-control::placeholder {
+  color: var(--text-light);
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(118, 95, 186, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+select.form-control {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+
+/* ==========================================================================
+   13. TESTIMONIALS
+   Quote cards with italic body text, dashed accent border, and star row.
+   ========================================================================== */
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px dashed var(--primary-border);
+  border-radius: 20px;
+  padding: 36px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card .stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  color: #f59e0b;        /* amber-400 for stars */
+  font-size: 16px;
+}
+
+.testimonial-card blockquote {
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.testimonial-card .author {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.testimonial-card .role {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   14. TAB SYSTEM
+   Horizontal tab buttons that toggle content panels.
+   ========================================================================== */
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-mid);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.tab-btn:hover {
+  border-color: var(--primary-border);
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  border-color: var(--primary-dark);
+  transform: scale(1.08);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: tabFadeIn 0.35s ease;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+
+/* ==========================================================================
+   15. PRICING CARDS
+   Program / service tier cards with an optional "popular" highlight.
+   ========================================================================== */
+
+.program-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 44px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Popular variant */
+.program-card.popular {
+  border: 2px solid var(--primary);
+}
+
+.popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--primary);
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.program-tier {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.program-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.program-price {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.program-price span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.program-card > p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.features-list {
+  margin-bottom: 32px;
+}
+
+.features-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+.features-list li::before {
+  content: '\f26a'; /* Bootstrap Icons check-circle-fill */
+  font-family: 'bootstrap-icons';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+
+/* ==========================================================================
+   16. FOOTER
+   Dark footer with multi-column link grid and bottom bar.
+   ========================================================================== */
+
+footer {
+  background-color: #0a0a0f;
+  padding: 80px 40px 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.footer-about {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 320px;
+}
+
+.footer-h {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+}
+
+.footer-link {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 5px 0;
+  transition: color var(--transition-speed);
+}
+
+.footer-link:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials a {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--transition-speed);
+}
+
+.footer-socials a:hover {
+  color: var(--white);
+}
+
+
+/* ==========================================================================
+   17. COUNTERS / STATS
+   Horizontal stat badges with large numbers and captions.
+   ========================================================================== */
+
+.stats-section {
+  padding: 60px 20px;
+  background: var(--white);
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 48px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* ==========================================================================
+   18. RESPONSIVE
+   Breakpoint at 768px — collapses grids, adjusts type scale, shows burger.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ── Navigation ──────────────────────────────────────────────────────── */
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  /* Keep home link visible alongside burger */
+  .nav-links .nav-link.home-link {
+    display: inline-flex;
+  }
+
+  .mobile-only {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: auto;
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    letter-spacing: -1px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ── Section layouts ─────────────────────────────────────────────────── */
+  .section-container {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  /* ── Grids ───────────────────────────────────────────────────────────── */
+  .grid,
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Bio ──────────────────────────────────────────────────────────────── */
+  .bio-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .bio-content h2 {
+    font-size: 28px;
+  }
+
+  /* ── Contact ─────────────────────────────────────────────────────────── */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .consultation-form-card {
+    padding: 28px;
+  }
+
+  /* ── Steps / pillars ─────────────────────────────────────────────────── */
+  .step-01,
+  .step-02,
+  .step-03,
+  .step-04 {
+    min-height: auto;
+  }
+
+  /* ── Cards ────────────────────────────────────────────────────────────── */
+  .card {
+    padding: 28px;
+  }
+
+  /* ── Pricing ─────────────────────────────────────────────────────────── */
+  .program-card {
+    padding: 28px;
+  }
+
+  /* ── Tabs ─────────────────────────────────────────────────────────────── */
+  .tab-buttons {
+    gap: 8px;
+  }
+
+  .tab-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────────────── */
+  footer {
+    padding: 60px 20px 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* ── Stats ────────────────────────────────────────────────────────────── */
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .stats-grid {
+    gap: 32px;
+  }
+}
+
+/* ── Extra-small devices (≤ 480px) ───────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

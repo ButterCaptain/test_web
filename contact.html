@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Hire Ready Pro</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Site Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <!-- ================================================================
+         HEADER (injected by header-loader.js)
+         ================================================================ -->
+    <div id="header-placeholder"></div>
+
+
+    <!-- ================================================================
+         SECTION: Hero
+         ================================================================ -->
+    <section class="hero">
+        <span class="eyebrow">GET IN TOUCH</span>
+        <h1>Let's Start Your<br>Career Acceleration</h1>
+        <p>Schedule a free consultation and discover how the HireReady Framework™ can help you land the role you deserve — with clarity, confidence, and a concrete plan.</p>
+    </section>
+
+
+    <!-- ================================================================
+         SECTION: Contact Form
+         ================================================================ -->
+    <section style="background: var(--primary-light);">
+        <div class="section-container">
+            <div class="contact-grid">
+
+                <!-- ── Left: Contact Info ──────────────────────────────── -->
+                <div class="contact-info animate-on-scroll">
+                    <h2>We'd Love to Hear From You</h2>
+                    <p>Whether you're looking for support, have a question about our services, or want to get started, reach out. You will receive a response within 48 hours with free overview suggestions and suggested next steps.</p>
+
+                    <!-- Email -->
+                    <div class="info-item">
+                        <i class="bi bi-envelope info-icon"></i>
+                        <div>
+                            <strong>Email Us</strong>
+                            <p>info@hirereadypro.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Locations -->
+                    <div class="info-item">
+                        <i class="bi bi-geo-alt info-icon"></i>
+                        <div>
+                            <strong>Locations</strong>
+                            <p>Las Vegas, NV, USA<br>St. George, UT, USA<br>Calgary, AB, Canada</p>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn -->
+                    <div class="info-item">
+                        <i class="bi bi-linkedin info-icon"></i>
+                        <div>
+                            <strong>LinkedIn</strong>
+                            <p>Hire Ready Pro</p>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="info-item">
+                        <i class="bi bi-clock info-icon"></i>
+                        <div>
+                            <strong>Response Time</strong>
+                            <p>Within 48 hours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Right: Consultation Form Card ───────────────────── -->
+                <div class="consultation-form-card animate-on-scroll delay-2">
+                    <form id="contactForm">
+
+                        <!-- First Name + Last Name (side by side) -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Jane" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Doe" required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(555) 123-4567">
+                        </div>
+
+                        <!-- Topic -->
+                        <div class="form-group">
+                            <label class="form-label" for="topic">Topic</label>
+                            <select id="topic" name="topic" class="form-control">
+                                <option value="" disabled selected>Select a topic...</option>
+                                <option value="Career Assessment">Career Assessment</option>
+                                <option value="Resume & LinkedIn">Resume &amp; LinkedIn</option>
+                                <option value="Interview Prep">Interview Prep</option>
+                                <option value="Career Strategy">Career Strategy</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <!-- LinkedIn URL -->
+                        <div class="form-group">
+                            <label class="form-label" for="linkedin">LinkedIn URL</label>
+                            <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/your-profile">
+                        </div>
+
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your career goals or what you're looking for..." required></textarea>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn-talk" style="width: 100%;">Send Message <i class="bi bi-send"></i></button>
+                    </form>
+
+                    <!-- Response area (populated by form-handler.js) -->
+                    <div id="formResponse" style="display: none; margin-top: 24px;"></div>
+                </div>
+
+            </div><!-- /contact-grid -->
+        </div><!-- /section-container -->
+    </section>
+
+
+    <!-- ================================================================
+         SECTION: Frequently Asked Questions
+         ================================================================ -->
+    <section style="background: var(--white);">
+        <div class="section-container">
+
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+
+                <!-- FAQ 1 -->
+                <div class="card animate-on-scroll delay-1">
+                    <h3>How does the free consultation work?</h3>
+                    <p>Simply fill out the form above or send us an email. We'll schedule a complimentary 30-minute call to learn about your goals, review your current situation, and outline how the HireReady Framework™ can help. There's no obligation — just real, actionable advice.</p>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="card animate-on-scroll delay-2">
+                    <h3>Who are your services designed for?</h3>
+                    <p>Our programs support anyone navigating a career transition — from college students and recent graduates entering the workforce to experienced professionals seeking a promotion, pivot, or return to work after a break.</p>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="card animate-on-scroll delay-3">
+                    <h3>How long does a typical program take?</h3>
+                    <p>Timelines are fully customized to your needs. Some clients complete a focused sprint in 2–4 weeks, while others prefer a deeper engagement over 2–3 months. We'll build a plan that fits your schedule and goals.</p>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="card animate-on-scroll delay-4">
+                    <h3>Do you offer virtual sessions?</h3>
+                    <p>Absolutely. All of our coaching sessions, assessments, and reviews are available fully virtually via video call. We work with clients across the U.S. and Canada — no matter where you're located, we're here for you.</p>
+                </div>
+
+            </div><!-- /grid -->
+        </div><!-- /section-container -->
+    </section>
+
+
+    <!-- ================================================================
+         FOOTER (injected by footer-loader.js)
+         ================================================================ -->
+    <div id="footer-placeholder"></div>
+
+
+    <!-- Scripts -->
+    <script src="js/header-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/form-handler.js"></script>
+</body>
+</html>

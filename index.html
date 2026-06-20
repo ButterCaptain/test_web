@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Ready Pro — Career Acceleration for Students &amp; Professionals</title>
+    <meta name="description" content="Hire Ready Pro (formerly HireReady Grad) provides expert career coaching, resume optimization, interview preparation, and job search strategy for students, graduates, and professionals.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           HOMEPAGE-SPECIFIC STYLES
+        ═══════════════════════════════════════════ */
+
+        /* Hero eyebrow animated gradient text */
+        .hero .eyebrow {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s linear infinite;
+            letter-spacing: 4px;
+        }
+
+        /* Hero CTA button wrapper */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        /* ── Stats Bar ── */
+        .stats-bar {
+            background: var(--primary-dark);
+            padding: 60px 20px;
+        }
+        .stats-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .stat-item {
+            text-align: center;
+            color: #fff;
+        }
+        .stat-number {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+            color: #fff;
+            letter-spacing: -2px;
+            display: block;
+        }
+        .stat-suffix {
+            font-size: 32px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.7);
+        }
+        .stat-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 8px;
+        }
+
+        /* ── Framework pillars grid ── */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            align-items: end;
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            background: var(--primary-dark);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .cta-banner h2 {
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        .cta-banner p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.65);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .btn-cta-light {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #fff;
+            color: var(--primary-dark);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-cta-light:hover {
+            background: transparent;
+            color: #fff;
+            transform: scale(1.06);
+        }
+
+        /* ── Testimonial cards ── */
+        .testimonial-card {
+            background: #fff;
+            border: 1px dashed var(--primary-border);
+            border-radius: 20px;
+            padding: 36px;
+            text-align: left;
+            transition: 0.3s;
+        }
+        .testimonial-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+        }
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        .testimonial-quote {
+            font-style: italic;
+            font-size: 16px;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .testimonial-author strong {
+            display: block;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        .testimonial-author small {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner h2 {
+                font-size: 30px;
+            }
+            .stat-number { font-size: 40px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Navigation (injected by JS)
+    ═══════════════════════════════════════════ -->
+    <div id="header-placeholder"></div>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Hero
+         PURPOSE: First impression, headline + CTA
+         TO REMOVE: Delete this entire <section> block
+    ═══════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="animate-on-scroll">
+            <span class="eyebrow">Navigate. Compete. Get Hired.</span>
+        </div>
+        <h1 class="animate-on-scroll delay-1">Your Career <br>Starts Here</h1>
+        <p class="animate-on-scroll delay-2">
+            Hire Ready Pro combines expert career coaching with strategic positioning tools
+            to help students, graduates, and professionals turn opportunities into interviews
+            and offers — guided by real hiring insiders.
+        </p>
+        <div class="hero-buttons animate-on-scroll delay-3">
+            <a href="services.html" class="btn-talk" onclick="if(window.openTab)openTab(null,'grads')">
+                I'm a Student / Graduate
+                <span>(Seeking first role)</span>
+            </a>
+            <a href="services.html" class="btn-talk" onclick="if(window.openTab)openTab(null,'pros')">
+                I'm a Professional
+                <span>(Seeking next role)</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Stats Counter Bar
+         PURPOSE: Social proof numbers with animated counters
+         TO REMOVE: Delete this entire <section class="stats-bar"> block
+    ═══════════════════════════════════════════ -->
+    <section class="stats-bar">
+        <div class="stats-bar-inner">
+            <div class="stat-item animate-on-scroll delay-1">
+                <span class="stat-number counter" data-target="1000" data-suffix="+">0</span>
+                <span class="stat-label">Professionals Hired</span>
+            </div>
+            <div class="stat-item animate-on-scroll delay-2">
+                <span class="stat-number counter" data-target="15" data-suffix="+">0</span>
+                <span class="stat-label">Years HR Leadership</span>
+            </div>
+            <div class="stat-item animate-on-scroll delay-3">
+                <span class="stat-number counter" data-target="500" data-suffix="+">0</span>
+                <span class="stat-label">Careers Launched</span>
+            </div>
+            <div class="stat-item animate-on-scroll delay-4">
+                <span class="stat-number counter" data-target="98" data-suffix="%">0</span>
+                <span class="stat-label">Client Satisfaction</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Career Acceleration Platform
+         PURPOSE: Overview of 3 core service pillars
+         TO REMOVE: Delete this entire <section> block
+    ═══════════════════════════════════════════ -->
+    <section>
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">What We Offer</span>
+                <h2 class="section-title">Career Acceleration Platform</h2>
+                <p style="margin: 20px auto 0; color: var(--text-mid); max-width: 700px; font-size: 18px;">
+                    The HireReady Framework™ provides a structured, proven path from where you are
+                    today to where you want to be — guided by experts who've sat on the other side
+                    of the hiring table.
+                </p>
+            </div>
+
+            <div class="grid toolkit-grid" style="margin-bottom: 50px;">
+                <!-- Card 1 -->
+                <a href="services.html" class="card hover-lift animate-on-scroll delay-1">
+                    <div class="card-header">
+                        <i class="bi bi-wrench-adjustable-circle card-icon"></i>
+                        <h3>Career Strategy</h3>
+                    </div>
+                    <p>Uncover what's limiting your interview and offer success. Strengthen your professional positioning and become a more competitive candidate in today's AI-driven job market.</p>
+                    <p style="font-size: 15px; font-weight: 600; color: var(--primary-dark); margin-top: auto; padding-top: 20px;">Learn More →</p>
+                </a>
+                <!-- Card 2 -->
+                <a href="services.html" class="card hover-lift animate-on-scroll delay-2">
+                    <div class="card-header">
+                        <i class="bi bi-card-checklist card-icon"></i>
+                        <h3>Resume &amp; LinkedIn Optimization</h3>
+                    </div>
+                    <p>Strengthen your professional brand and position your experience in the language employers actually use. Beat ATS systems and stand out to human recruiters.</p>
+                    <p style="font-size: 15px; font-weight: 600; color: var(--primary-dark); margin-top: auto; padding-top: 20px;">Learn More →</p>
+                </a>
+                <!-- Card 3 -->
+                <a href="services.html" class="card hover-lift animate-on-scroll delay-3">
+                    <div class="card-header">
+                        <i class="bi bi-megaphone card-icon"></i>
+                        <h3>Interview Preparation</h3>
+                    </div>
+                    <p>Build real confidence through mock interviews, recruiter-style evaluations, AI-assisted practice, and personalized feedback from former HR executives.</p>
+                    <p style="font-size: 15px; font-weight: 600; color: var(--primary-dark); margin-top: auto; padding-top: 20px;">Learn More →</p>
+                </a>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="services.html" class="btn-talk">Explore All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: HireReady Framework™ Preview
+         PURPOSE: Show the 4-step methodology
+         TO REMOVE: Delete this entire <section> block
+    ═══════════════════════════════════════════ -->
+    <section style="background: var(--primary-light);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Our Methodology</span>
+                <h2 class="section-title">The HireReady Framework™</h2>
+                <p style="margin: 20px auto 0; color: var(--text-mid); max-width: 700px; font-size: 18px;">
+                    A proven, four-step career acceleration system built on 15+ years of real
+                    executive hiring experience.
+                </p>
+            </div>
+
+            <div class="framework-grid" style="margin-bottom: 50px;">
+                <!-- Step 01 -->
+                <div class="card step-01 animate-on-scroll delay-1">
+                    <span class="step-badge">Step 01</span>
+                    <h3 style="font-size: 22px; color: var(--primary-dark); margin-bottom: 12px;">Assess</h3>
+                    <p style="color: var(--text-mid); font-size: 14px; line-height: 1.6;">
+                        Identify your strengths, communication style, and ideal career direction through
+                        proven assessment tools including SkillScan® and DiSC®.
+                    </p>
+                    <ul class="framework-list" style="margin-top: auto; padding-top: 20px;">
+                        <li>SkillScan® Assessment</li>
+                        <li>DiSC® Profile</li>
+                        <li>Strengths Mapping</li>
+                        <li>Career Direction</li>
+                    </ul>
+                </div>
+                <!-- Step 02 -->
+                <div class="card step-02 animate-on-scroll delay-2">
+                    <span class="step-badge">Step 02</span>
+                    <h3 style="font-size: 22px; color: var(--primary-dark); margin-bottom: 12px;">Position</h3>
+                    <p style="color: var(--text-mid); font-size: 14px; line-height: 1.6;">
+                        Build a compelling professional brand through resume optimization, LinkedIn strategy,
+                        and positioning that resonates with today's employers.
+                    </p>
+                    <ul class="framework-list" style="margin-top: auto; padding-top: 20px;">
+                        <li>Resume Optimization</li>
+                        <li>LinkedIn Strategy</li>
+                        <li>Brand Development</li>
+                        <li>ATS Compatibility</li>
+                    </ul>
+                </div>
+                <!-- Step 03 -->
+                <div class="card step-03 animate-on-scroll delay-3">
+                    <span class="step-badge">Step 03</span>
+                    <h3 style="font-size: 22px; color: var(--primary-dark); margin-bottom: 12px;">Prepare</h3>
+                    <p style="color: var(--text-mid); font-size: 14px; line-height: 1.6;">
+                        Build confidence and interview readiness through mock sessions, behavioral coaching,
+                        AI practice, and recruiter-informed feedback.
+                    </p>
+                    <ul class="framework-list" style="margin-top: auto; padding-top: 20px;">
+                        <li>Mock Interviews</li>
+                        <li>Behavioral Coaching</li>
+                        <li>AI Practice Tools</li>
+                        <li>Confidence Building</li>
+                    </ul>
+                </div>
+                <!-- Step 04 -->
+                <div class="card step-04 animate-on-scroll delay-4">
+                    <span class="step-badge">Step 04</span>
+                    <h3 style="font-size: 22px; color: var(--primary-dark); margin-bottom: 12px;">Launch</h3>
+                    <p style="color: var(--text-mid); font-size: 14px; line-height: 1.6;">
+                        Execute a focused, strategic job search with networking guidance, application
+                        tracking, and offer negotiation support.
+                    </p>
+                    <ul class="framework-list" style="margin-top: auto; padding-top: 20px;">
+                        <li>Job Search Strategy</li>
+                        <li>Networking Guidance</li>
+                        <li>Application Tracking</li>
+                        <li>Offer Negotiation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="framework.html" class="btn-talk">Learn About Our Framework →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Real Results / Testimonials
+         PURPOSE: Social proof from real clients
+         TO REMOVE: Delete this entire <section> block
+    ═══════════════════════════════════════════ -->
+    <section>
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Client Success</span>
+                <h2 class="section-title">Real Results</h2>
+            </div>
+
+            <div class="grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card animate-on-scroll delay-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Knowing that Kim Marie had led several HR organizations gave us tremendous confidence
+                        that our daughter was learning from an expert. The results spoke for themselves —
+                        she landed her first role within 6 weeks."
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Carrie R.</strong>
+                        <small>Parent of 2025 Graduate</small>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card animate-on-scroll delay-2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "The biggest difference was learning how employers actually think. My resume
+                        and LinkedIn improved immediately and I started getting callbacks within days
+                        of making the changes."
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Gibson B.</strong>
+                        <small>2026 Intern Student</small>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card animate-on-scroll delay-3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "After 8 months of silence, I completely repositioned myself using the HireReady
+                        Framework. Two interviews in the first week, and an offer by week three.
+                        Incredible ROI."
+                    </p>
+                    <div class="testimonial-author">
+                        <strong>Marcus T.</strong>
+                        <small>Senior Marketing Manager</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Why Choose Us (Value Props)
+         PURPOSE: Differentiators from competitors
+         TO REMOVE: Delete this entire <section> block
+    ═══════════════════════════════════════════ -->
+    <section style="background: var(--primary-light);">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Why Hire Ready Pro?</span>
+                <h2 class="section-title">Built Different. Built Better.</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card animate-on-scroll delay-1">
+                    <div class="card-header">
+                        <i class="bi bi-award card-icon"></i>
+                        <h3>Insider Expertise</h3>
+                    </div>
+                    <p>Led by a former Chief HR Officer who personally reviewed thousands of resumes and conducted hundreds of executive interviews. We know exactly what gets candidates hired.</p>
+                </div>
+                <div class="card animate-on-scroll delay-2">
+                    <div class="card-header">
+                        <i class="bi bi-person-check card-icon"></i>
+                        <h3>Personalized Strategy</h3>
+                    </div>
+                    <p>No cookie-cutter advice. Every service is tailored to your unique background, industry, career goals, and the specific type of role you're targeting.</p>
+                </div>
+                <div class="card animate-on-scroll delay-3">
+                    <div class="card-header">
+                        <i class="bi bi-shield-check card-icon"></i>
+                        <h3>AI-Era Ready</h3>
+                    </div>
+                    <p>We understand how ATS systems, AI screening tools, and modern hiring technology work — and we equip you with the exact strategies to navigate and beat them.</p>
+                </div>
+                <div class="card animate-on-scroll delay-4">
+                    <div class="card-header">
+                        <i class="bi bi-graph-up-arrow card-icon"></i>
+                        <h3>Proven Results</h3>
+                    </div>
+                    <p>Our clients consistently see measurable improvements in interview callbacks, LinkedIn engagement, and offer rates. Real outcomes — not just inspiration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: CTA Banner
+         PURPOSE: Final conversion push to contact/services
+         TO REMOVE: Delete this entire <section class="cta-banner"> block
+    ═══════════════════════════════════════════ -->
+    <section class="cta-banner">
+        <h2 class="animate-on-scroll">Ready to Accelerate Your Career?</h2>
+        <p class="animate-on-scroll delay-1">
+            Get a free consultation and discover exactly how Hire Ready Pro can help
+            you stand out in today's competitive market.
+        </p>
+        <a href="contact.html" class="btn-cta-light animate-on-scroll delay-2">
+            Schedule Free Consultation
+        </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: Footer (injected by JS)
+    ═══════════════════════════════════════════ -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/header-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+    <script src="js/scroll-animations.js"></script>
+
+    <script>
+        // Counter suffix support (e.g., "+", "%")
+        document.addEventListener('DOMContentLoaded', function () {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.dataset.target, 10);
+                        const suffix = el.dataset.suffix || '';
+                        const duration = 2000;
+                        const start = performance.now();
+                        function tick(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const ease = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.round(ease * target).toLocaleString() + suffix;
+                            if (progress < 1) requestAnimationFrame(tick);
+                        }
+                        requestAnimationFrame(tick);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counters.forEach(c => observer.observe(c));
+        });
+    </script>
+
+</body>
+
+</html>
